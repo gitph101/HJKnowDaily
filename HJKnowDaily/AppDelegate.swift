@@ -17,6 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        var home:HJHomeViewController = HJHomeViewController()
+        var leftView:HJLeftViewController = HJLeftViewController()
+        var slide:SlideNavigationController = SlideNavigationController(rootViewController: home)
+        slide.leftMenu = leftView
+        slide.enableShadow = false 
+        window?.rootViewController = slide
+        
+
         return true
     }
 
