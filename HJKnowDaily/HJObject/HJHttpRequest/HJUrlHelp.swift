@@ -14,7 +14,11 @@ class HJUrlHelp: NSObject {
     func urlappend(head:String,arr:[String]) -> String {
         var tem:String = head
         for i in 1...arr.count/2{
-        tem.stringByAppendingFormat("", <#arguments: CVarArgType#>...)
-         }
+            tem.stringByAppendingFormat("&"+arr[i*2-1]+"=" + arr[2*i])
+        }
+        return tem
     }
+    
+    
+    
 }

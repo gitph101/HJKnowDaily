@@ -13,13 +13,33 @@ class HJHomeViewController: HJRootViewController ,SlideNavigationControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.whiteColor()
-        
-    
+        loadData()
+
         // Do any additional setup after loading the view.
     }
+    
+    func loadData(){
+        request.urlRequest("http://news-at.zhihu.com/api/4/news/latest", success: { (data,error) -> Void in
+            
+        })
+    }
+    /*
+    let jsonObject : AnyObject! = NSJSONSerialization.JSONObjectWithData(dataFromTwitter, options: NSJSONReadingOptions.MutableContainers, error: nil)
+    if let statusesArray = jsonObject as? NSArray{
+    if let aStatus = statusesArray[0] as? NSDictionary{
+    if let user = aStatus["user"] as? NSDictionary{
+    if let userName = user["name"] as? NSDictionary{
+    //Finally We Got The Name
+    
+    }
+    }
+    }
+    }
+    */
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+//        NSJSONSerialization.j
         // Dispose of any resources that can be recreated.
     }
     

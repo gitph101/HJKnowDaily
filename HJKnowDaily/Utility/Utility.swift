@@ -11,5 +11,6 @@ import UIKit
 class Utility: NSObject {
     static let kWidth = UIScreen.mainScreen().bounds.size.width
     static let KHeight = UIScreen.mainScreen().bounds.size.height
+    static let kOffsetLeft = UIScreen.mainScreen().bounds.size.width * 0.8
     
 }

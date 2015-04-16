@@ -9,6 +9,8 @@
 import UIKit
 
 class HJRootViewController: UIViewController {
+    
+    var request:HJHttpRequest = HJHttpRequest()
 
     override func viewDidLoad() {
         super.viewDidLoad()

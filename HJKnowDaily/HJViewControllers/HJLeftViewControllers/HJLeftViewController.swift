@@ -9,18 +9,11 @@
 import UIKit
 
 class HJLeftViewController: HJRootViewController,UITableViewDataSource,UITableViewDelegate {
+    
+    let headViewHeight:CGFloat = 80
     var tableView:UITableView = UITableView()
     var datas = ["第一季","第二类","第三类","第四类","第五类"]
-
-//    required init(coder aDecoder: NSCoder) {
-//        tableView = UITableView()
-//        super.init(coder: aDecoder)
-//    }
-//    
-//    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-//        tableView = UITableView()
-//        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-//    }
+    var headView:UIView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +27,17 @@ class HJLeftViewController: HJRootViewController,UITableViewDataSource,UITableVi
     }
     
     func setUI(){
-        tableView.frame = CGRectMake(0, 60, view.frame.width, view.frame.height)
+        tableView.frame = CGRectMake(0, headViewHeight, view.frame.width, view.frame.height)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")        // Do any additional setup after loading the view.
         view.addSubview(tableView)
+        
+        //headView
+        headView.frame = CGRectMake(0, 0, view.frame.width, headViewHeight)
+        headView.backgroundColor = UIColor.redColor()
+        view.addSubview(headView)
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
