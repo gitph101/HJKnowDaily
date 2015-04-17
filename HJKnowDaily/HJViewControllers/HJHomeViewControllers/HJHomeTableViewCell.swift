@@ -16,25 +16,54 @@ class HJHomeTableViewCell: UITableViewCell {
     let kcellheight:CGFloat = 90
     
     
-    var title:UILabel = UILabel()
+    
+    var title:UILabel = UILabel() {
+        willSet{
+            title.frame = CGRectMake(kleftwidth, ktophighte, Utility.kWidth - kimagewidth - 2 * kleftwidth, kcellheight - ktophighte * 2)
+        }
+        didSet{
+            let tem:CGRect = title.frame
+            let rect:CGRect = heightForStr(title.text!, width: title.frame.width)
+            title.frame = CGRectMake(tem.origin.x, tem.origin.y, tem.width, rect.height)
+            category.frame = CGRectMake(tem.origin.x, tem.origin.y + rect.height, tem.width, rect.height)
+        }
+    }
+    
     var rightImageView:UIImageView = UIImageView()
     var category:UILabel = UILabel()
-    var type:String = "1"
-        {
+
+    var type:String = "0" {
             willSet{
                     setUIType1()
             }
             didSet{
-                if type == "1"{
+                if type == "0"{
                     setUIType1()
-                }else if type == "2"{
+                }else if type == "1"{
                     setUIType2()
-                }else if type == "3"{
+                }else if type == "2"{
                     setUIType3()
                 }
             }
             
     }
+    
+    
+    var titleText:String = "不变是行动" {
+        willSet{
+            title.frame = CGRectMake(kleftwidth, ktophighte, Utility.kWidth - kimagewidth - 2 * kleftwidth, kcellheight - ktophighte * 2)
+            title.text = titleText
+
+        }
+        didSet{
+            let tem:CGRect = title.frame
+            let rect:CGRect = heightForStr(title.text!, width: title.frame.width)
+            title.frame = CGRectMake(tem.origin.x, tem.origin.y, tem.width, rect.height)
+            category.frame = CGRectMake(tem.origin.x, tem.origin.y + rect.height, tem.width, rect.height)
+            title.text = titleText
+        }
+    }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -102,20 +131,5 @@ class HJHomeTableViewCell: UITableViewCell {
         let boundingRect = text.boundingRectWithSize(size, options: options, attributes: attributes, context: nil)
         return boundingRect
     }
-    //MARK -
-    
-    /*
-    [attrStr addAttribute:NSFontAttributeName
-    value:[UIFont systemFontOfSize:13.0]
-    range:allRange];
-    [attrStr addAttribute:NSForegroundColorAttributeName
-    value:[UIColor blackColor]
-    range:allRange];
-    
-    NSRange destRange = [fullDescAndTagStr rangeOfString:tagStr];
-    [attrStr addAttribute:NSForegroundColorAttributeName
-    value:HEXCOLOR(0x009cdd)
-    range:destRange];
-    
-    */
+
 }

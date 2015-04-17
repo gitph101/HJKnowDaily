@@ -53,7 +53,14 @@ class HJHomeViewController: HJRootViewController ,SlideNavigationControllerDeleg
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView .dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! HJHomeTableViewCell
         cell.frame = CGRectMake(0, 0, Utility.kWidth, 90)
-        cell.title.text = datas[indexPath.row]["title"] as? String
+        cell.type =  String((datas[indexPath.row]["type"] as? Int)!)
+        cell.titleText = (datas[indexPath.row]["title"] as? String)!
+        
+        println(datas[indexPath.row].allKeys)
+//        let str:String = (datas[indexPath.row]["image"] as? String)!
+//        ImageLoader.sharedLoader.imageForUrl(str, completionHandler:{(image: UIImage?, url: String) in
+//            cell.imageView!.image = image
+//        })
         return cell
     }
     
