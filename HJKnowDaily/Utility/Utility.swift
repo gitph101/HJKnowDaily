@@ -13,4 +13,9 @@ class Utility: NSObject {
     static let KHeight = UIScreen.mainScreen().bounds.size.height
     static let kOffsetLeft = UIScreen.mainScreen().bounds.size.width * 0.8
     
+    
+    // 字体相关。
+    static let titleFont = UIFont.systemFontOfSize(16)
+    static let categoryFont = UIFont.systemFontOfSize(12)
+    
 }

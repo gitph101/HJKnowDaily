@@ -49,7 +49,7 @@ class HJHttpRequest: NSObject {
 //        }
 //    }
     
-    func urlRequest(url:String,success:(Any,Any)->Void){
+    func urlRequest(url:String,success:(AnyObject?,AnyObject?)->Void){
         Alamofire.request(.GET,url).responseJSON(options: NSJSONReadingOptions.AllowFragments) { (_, _, data, error) -> Void in return
             success(data,error)
         }
