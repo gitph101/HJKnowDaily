@@ -11,7 +11,7 @@ import SwiftyJSON
 class HJHomeViewController: HJRootViewController ,SlideNavigationControllerDelegate,UITableViewDataSource,UITableViewDelegate{
     
     let headViewHeight:CGFloat = 80
-    var tableView:UITableView = UITableView()
+    dynamic var tableView:UITableView = UITableView()
     var datas = [AnyObject]()
     var headView:UIView = UIView()
     
@@ -29,10 +29,8 @@ class HJHomeViewController: HJRootViewController ,SlideNavigationControllerDeleg
         request.urlRequest("http://news-at.zhihu.com/api/4/news/latest", success: { (data,error) -> Void in
             let json:JSON = JSON(data!)
             println(json)
-            println(json["date"].stringValue)
             self.datas = json["stories"].arrayObject!
             self.tableView.reloadData()
-            println(json["stories"].arrayObject![0]["title"])
 
         })
     }
@@ -45,9 +43,18 @@ class HJHomeViewController: HJRootViewController ,SlideNavigationControllerDeleg
         view.addSubview(tableView)
         
         //headView
-        headView.frame = CGRectMake(0, 0, view.frame.width, headViewHeight)
-        headView.backgroundColor = UIColor.redColor()
+//        headView.frame = CGRectMake(0, 0, view.frame.width, headViewHeight)
+//        headView.backgroundColor = UIColor.redColor()
+////        tableView.tableHeaderView = headView
+//        HJExpandHeader.expandWithScrollView(tableView, expandView: headView)
         
+        var image1:UIImageView = UIImageView(frame: CGRectMake(0, 0, Utility.kWidth, 150))
+        image1.image = UIImage(named: "image")
+        image1.clipsToBounds = true;
+        image1.contentMode = UIViewContentMode.ScaleAspectFill;
+        
+        HJExpandHeader.expandWithScrollView(tableView, expandView: image1)
+
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -55,12 +62,23 @@ class HJHomeViewController: HJRootViewController ,SlideNavigationControllerDeleg
         cell.frame = CGRectMake(0, 0, Utility.kWidth, 90)
         cell.type =  String((datas[indexPath.row]["type"] as? Int)!)
         cell.titleText = (datas[indexPath.row]["title"] as? String)!
-        
         println(datas[indexPath.row].allKeys)
-//        let str:String = (datas[indexPath.row]["image"] as? String)!
-//        ImageLoader.sharedLoader.imageForUrl(str, completionHandler:{(image: UIImage?, url: String) in
-//            cell.imageView!.image = image
-//        })
+        
+        if (datas[indexPath.row].objectForKey("images") != nil){
+            let str:[String] = (datas[indexPath.row]["images"]) as! [String]
+            println(str)
+            ImageLoader.sharedLoader.imageForUrl(str[0] as String, completionHandler:{(image: UIImage?, url: String) in
+                cell.rightImageView.image = image
+            })
+            
+        }else if (datas[indexPath.row].objectForKey("image") != nil){
+            let str:String = (datas[indexPath.row]["image"]) as! String
+            ImageLoader.sharedLoader.imageForUrl(str as String, completionHandler:{(image: UIImage?, url: String) in
+                cell.rightImageView.image = image
+            })
+            
+        }
+
         return cell
     }
     

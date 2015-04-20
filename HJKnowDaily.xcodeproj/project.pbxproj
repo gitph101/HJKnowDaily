@@ -28,6 +28,9 @@
 		E23226791ADE081F00BFFF2A /* HJLeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23226781ADE081F00BFFF2A /* HJLeftViewController.swift */; };
 		E232267C1ADE360900BFFF2A /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = E232267B1ADE360900BFFF2A /* Utility.swift */; };
 		E23226801ADE373B00BFFF2A /* HJUrlHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E232267F1ADE373B00BFFF2A /* HJUrlHelp.swift */; };
+		E2408C421AE5067800995817 /* HJScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2408C411AE5067800995817 /* HJScrollView.swift */; };
+		E24262441AE4CF0500AD5C9D /* HJExpandHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24262431AE4CF0500AD5C9D /* HJExpandHeader.swift */; };
+		E24262481AE4FD4C00AD5C9D /* CExpandHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E24262471AE4FD4C00AD5C9D /* CExpandHeader.m */; };
 		E2FB87E41ADF50E8009A840F /* HJHttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FB87E31ADF50E8009A840F /* HJHttpRequest.swift */; };
 		E2FB87E81ADF8703009A840F /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FB87E71ADF8703009A840F /* Alamofire.swift */; };
 		E2FB88071ADF8A1F009A840F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2FB88001ADF8A0E009A840F /* Alamofire.framework */; };
@@ -169,6 +172,10 @@
 		E23226781ADE081F00BFFF2A /* HJLeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJLeftViewController.swift; sourceTree = "<group>"; };
 		E232267B1ADE360900BFFF2A /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		E232267F1ADE373B00BFFF2A /* HJUrlHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJUrlHelp.swift; sourceTree = "<group>"; };
+		E2408C411AE5067800995817 /* HJScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJScrollView.swift; sourceTree = "<group>"; };
+		E24262431AE4CF0500AD5C9D /* HJExpandHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJExpandHeader.swift; sourceTree = "<group>"; };
+		E24262461AE4FD4C00AD5C9D /* CExpandHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpandHeader.h; sourceTree = "<group>"; };
+		E24262471AE4FD4C00AD5C9D /* CExpandHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExpandHeader.m; sourceTree = "<group>"; };
 		E2FB87E31ADF50E8009A840F /* HJHttpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJHttpRequest.swift; sourceTree = "<group>"; };
 		E2FB87E71ADF8703009A840F /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 		E2FB87F81ADF8A0E009A840F /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "project/Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
@@ -293,6 +300,7 @@
 		E232264F1ADE067400BFFF2A /* HJHomeViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E242623A1AE4C7CA00AD5C9D /* HJHeadView */,
 				E23226761ADE080E00BFFF2A /* HJHomeViewController.swift */,
 				E2FC1DE31AE0CD1E00418DA8 /* HJHomeTableViewCell.swift */,
 				E2FC1DE41AE0CD1E00418DA8 /* HJHomeTableViewCell.xib */,
@@ -320,6 +328,7 @@
 		E23226561ADE06D200BFFF2A /* OC */ = {
 			isa = PBXGroup;
 			children = (
+				E24262451AE4FD4C00AD5C9D /* ExpandHelp */,
 				E23226581ADE071E00BFFF2A /* slide-menu */,
 			);
 			path = OC;
@@ -397,6 +406,24 @@
 				E2FB87E31ADF50E8009A840F /* HJHttpRequest.swift */,
 			);
 			path = HJHttpRequest;
+			sourceTree = "<group>";
+		};
+		E242623A1AE4C7CA00AD5C9D /* HJHeadView */ = {
+			isa = PBXGroup;
+			children = (
+				E24262431AE4CF0500AD5C9D /* HJExpandHeader.swift */,
+				E2408C411AE5067800995817 /* HJScrollView.swift */,
+			);
+			path = HJHeadView;
+			sourceTree = "<group>";
+		};
+		E24262451AE4FD4C00AD5C9D /* ExpandHelp */ = {
+			isa = PBXGroup;
+			children = (
+				E24262461AE4FD4C00AD5C9D /* CExpandHeader.h */,
+				E24262471AE4FD4C00AD5C9D /* CExpandHeader.m */,
+			);
+			path = ExpandHelp;
 			sourceTree = "<group>";
 		};
 		E2FB87F91ADF8A0E009A840F /* Products */ = {
@@ -611,7 +638,10 @@
 				E232266B1ADE071E00BFFF2A /* SlideNavigationContorllerAnimatorScale.m in Sources */,
 				E2FC1DE51AE0CD1E00418DA8 /* HJHomeTableViewCell.swift in Sources */,
 				E2FC1DCA1AE0B12600418DA8 /* HJNewsModel.swift in Sources */,
+				E2408C421AE5067800995817 /* HJScrollView.swift in Sources */,
 				E232266C1ADE071E00BFFF2A /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
+				E24262481AE4FD4C00AD5C9D /* CExpandHeader.m in Sources */,
+				E24262441AE4CF0500AD5C9D /* HJExpandHeader.swift in Sources */,
 				E23226771ADE080E00BFFF2A /* HJHomeViewController.swift in Sources */,
 				E232262F1ADE042200BFFF2A /* ViewController.swift in Sources */,
 				E23226751ADE076100BFFF2A /* HJRootView.swift in Sources */,

@@ -10,7 +10,8 @@ import UIKit
 import Foundation
 class HJHomeTableViewCell: UITableViewCell {
     
-    let kleftwidth:CGFloat = 5
+    let kleftwidth:CGFloat = 8
+    let kGapWidth:CGFloat = 3
     let ktophighte:CGFloat = 10
     let kimagewidth:CGFloat = 90
     let kcellheight:CGFloat = 90
@@ -49,7 +50,7 @@ class HJHomeTableViewCell: UITableViewCell {
     }
     
     
-    var titleText:String = "不变是行动" {
+    var titleText:String = "" {
         willSet{
             title.frame = CGRectMake(kleftwidth, ktophighte, Utility.kWidth - kimagewidth - 2 * kleftwidth, kcellheight - ktophighte * 2)
             title.text = titleText
@@ -57,7 +58,7 @@ class HJHomeTableViewCell: UITableViewCell {
         }
         didSet{
             let tem:CGRect = title.frame
-            let rect:CGRect = heightForStr(title.text!, width: title.frame.width)
+            let rect:CGRect = heightForStr(titleText, width: title.frame.width)
             title.frame = CGRectMake(tem.origin.x, tem.origin.y, tem.width, rect.height)
             category.frame = CGRectMake(tem.origin.x, tem.origin.y + rect.height, tem.width, rect.height)
             title.text = titleText
@@ -89,7 +90,7 @@ class HJHomeTableViewCell: UITableViewCell {
     
     func setUI(){
         title.frame = CGRectMake(kleftwidth, ktophighte, Utility.kWidth - kimagewidth - 2 * kleftwidth, kcellheight - ktophighte * 2)
-        title.numberOfLines = 2
+        title.numberOfLines = 3
         title.textAlignment = NSTextAlignment.Left
         title.font = Utility.titleFont
         contentView.addSubview(title)
@@ -106,25 +107,24 @@ class HJHomeTableViewCell: UITableViewCell {
     
     
     func setUIType1(){
-        title.frame = CGRectMake(kleftwidth, ktophighte, Utility.kWidth - kimagewidth - 2 * kleftwidth, kcellheight - ktophighte * 2)
-        rightImageView.frame = CGRectMake(Utility.kWidth - kimagewidth - 2 * kleftwidth, ktophighte, kimagewidth, kcellheight - ktophighte * 2)
+        title.frame = CGRectMake(kleftwidth, ktophighte, Utility.kWidth - kimagewidth - 2 * kleftwidth - kGapWidth, kcellheight - ktophighte * 2)
+        rightImageView.frame = CGRectMake(title.frame.width + title.frame.origin.x + kGapWidth, ktophighte, kimagewidth, kcellheight - ktophighte * 2)
         imageView?.backgroundColor = UIColor.redColor()
     }
     
     func setUIType2(){
-        title.frame = CGRectMake(kleftwidth, ktophighte, Utility.kWidth - kimagewidth - 2 * kleftwidth, kcellheight - ktophighte * 2)
-        rightImageView.frame = CGRectMake(Utility.kWidth - kimagewidth - 2 * kleftwidth, ktophighte, kimagewidth, kcellheight - ktophighte * 2)
+        title.frame = CGRectMake(kleftwidth, ktophighte, Utility.kWidth - kimagewidth - 2 * kleftwidth - kGapWidth, kcellheight - ktophighte * 2)
+        rightImageView.frame = CGRectMake(title.frame.width + title.frame.origin.x + kGapWidth, ktophighte, kimagewidth, kcellheight - ktophighte * 2)
         
     }
     
     func setUIType3(){
-        title.frame = CGRectMake(kleftwidth, ktophighte, Utility.kWidth - kimagewidth - 2 * kleftwidth, kcellheight - ktophighte * 2)
-        rightImageView.frame = CGRectMake(Utility.kWidth - kimagewidth - 2 * kleftwidth, ktophighte, kimagewidth, kcellheight - ktophighte * 2)
+        title.frame = CGRectMake(kleftwidth, ktophighte, Utility.kWidth - kimagewidth - 2 * kleftwidth - kGapWidth, kcellheight - ktophighte * 2)
+        rightImageView.frame = CGRectMake(title.frame.width + title.frame.origin.x + kGapWidth, ktophighte, kimagewidth, kcellheight - ktophighte * 2)
 
     }
     
     func heightForStr(text:String,width:CGFloat)->CGRect{
-        UIFont.systemFontOfSize(13)
         let size = CGSize(width: width, height: CGFloat.max)
         let options : NSStringDrawingOptions = .UsesLineFragmentOrigin
         let attributes = [NSFontAttributeName:Utility.titleFont]
