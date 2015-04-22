@@ -28,9 +28,12 @@
 		E23226791ADE081F00BFFF2A /* HJLeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23226781ADE081F00BFFF2A /* HJLeftViewController.swift */; };
 		E232267C1ADE360900BFFF2A /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = E232267B1ADE360900BFFF2A /* Utility.swift */; };
 		E23226801ADE373B00BFFF2A /* HJUrlHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E232267F1ADE373B00BFFF2A /* HJUrlHelp.swift */; };
-		E2408C421AE5067800995817 /* HJScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2408C411AE5067800995817 /* HJScrollView.swift */; };
 		E24262441AE4CF0500AD5C9D /* HJExpandHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24262431AE4CF0500AD5C9D /* HJExpandHeader.swift */; };
 		E24262481AE4FD4C00AD5C9D /* CExpandHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E24262471AE4FD4C00AD5C9D /* CExpandHeader.m */; };
+		E27A51F71AE7A86500AE40D1 /* centerIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E27A51F21AE7A86500AE40D1 /* centerIcon@2x.png */; };
+		E27A51F81AE7A86500AE40D1 /* UIScrollView+UzysCircularProgressPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = E27A51F41AE7A86500AE40D1 /* UIScrollView+UzysCircularProgressPullToRefresh.m */; };
+		E27A51F91AE7A86500AE40D1 /* UzysRadialProgressActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = E27A51F61AE7A86500AE40D1 /* UzysRadialProgressActivityIndicator.m */; };
+		E2FB611B1AE5E8D200EAD500 /* HJHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FB611A1AE5E8D200EAD500 /* HJHeadView.swift */; };
 		E2FB87E41ADF50E8009A840F /* HJHttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FB87E31ADF50E8009A840F /* HJHttpRequest.swift */; };
 		E2FB87E81ADF8703009A840F /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FB87E71ADF8703009A840F /* Alamofire.swift */; };
 		E2FB88071ADF8A1F009A840F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2FB88001ADF8A0E009A840F /* Alamofire.framework */; };
@@ -172,10 +175,15 @@
 		E23226781ADE081F00BFFF2A /* HJLeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJLeftViewController.swift; sourceTree = "<group>"; };
 		E232267B1ADE360900BFFF2A /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		E232267F1ADE373B00BFFF2A /* HJUrlHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJUrlHelp.swift; sourceTree = "<group>"; };
-		E2408C411AE5067800995817 /* HJScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJScrollView.swift; sourceTree = "<group>"; };
 		E24262431AE4CF0500AD5C9D /* HJExpandHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJExpandHeader.swift; sourceTree = "<group>"; };
 		E24262461AE4FD4C00AD5C9D /* CExpandHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpandHeader.h; sourceTree = "<group>"; };
 		E24262471AE4FD4C00AD5C9D /* CExpandHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExpandHeader.m; sourceTree = "<group>"; };
+		E27A51F21AE7A86500AE40D1 /* centerIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "centerIcon@2x.png"; sourceTree = "<group>"; };
+		E27A51F31AE7A86500AE40D1 /* UIScrollView+UzysCircularProgressPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+UzysCircularProgressPullToRefresh.h"; sourceTree = "<group>"; };
+		E27A51F41AE7A86500AE40D1 /* UIScrollView+UzysCircularProgressPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+UzysCircularProgressPullToRefresh.m"; sourceTree = "<group>"; };
+		E27A51F51AE7A86500AE40D1 /* UzysRadialProgressActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UzysRadialProgressActivityIndicator.h; sourceTree = "<group>"; };
+		E27A51F61AE7A86500AE40D1 /* UzysRadialProgressActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UzysRadialProgressActivityIndicator.m; sourceTree = "<group>"; };
+		E2FB611A1AE5E8D200EAD500 /* HJHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJHeadView.swift; sourceTree = "<group>"; };
 		E2FB87E31ADF50E8009A840F /* HJHttpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJHttpRequest.swift; sourceTree = "<group>"; };
 		E2FB87E71ADF8703009A840F /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 		E2FB87F81ADF8A0E009A840F /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "project/Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
@@ -328,6 +336,7 @@
 		E23226561ADE06D200BFFF2A /* OC */ = {
 			isa = PBXGroup;
 			children = (
+				E27A51DD1AE74ACA00AE40D1 /* UzysRadialProgressActivityIndicator */,
 				E24262451AE4FD4C00AD5C9D /* ExpandHelp */,
 				E23226581ADE071E00BFFF2A /* slide-menu */,
 			);
@@ -412,7 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				E24262431AE4CF0500AD5C9D /* HJExpandHeader.swift */,
-				E2408C411AE5067800995817 /* HJScrollView.swift */,
+				E2FB611A1AE5E8D200EAD500 /* HJHeadView.swift */,
 			);
 			path = HJHeadView;
 			sourceTree = "<group>";
@@ -424,6 +433,18 @@
 				E24262471AE4FD4C00AD5C9D /* CExpandHeader.m */,
 			);
 			path = ExpandHelp;
+			sourceTree = "<group>";
+		};
+		E27A51DD1AE74ACA00AE40D1 /* UzysRadialProgressActivityIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				E27A51F21AE7A86500AE40D1 /* centerIcon@2x.png */,
+				E27A51F31AE7A86500AE40D1 /* UIScrollView+UzysCircularProgressPullToRefresh.h */,
+				E27A51F41AE7A86500AE40D1 /* UIScrollView+UzysCircularProgressPullToRefresh.m */,
+				E27A51F51AE7A86500AE40D1 /* UzysRadialProgressActivityIndicator.h */,
+				E27A51F61AE7A86500AE40D1 /* UzysRadialProgressActivityIndicator.m */,
+			);
+			path = UzysRadialProgressActivityIndicator;
 			sourceTree = "<group>";
 		};
 		E2FB87F91ADF8A0E009A840F /* Products */ = {
@@ -608,6 +629,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E27A51F71AE7A86500AE40D1 /* centerIcon@2x.png in Resources */,
 				E232266F1ADE071E00BFFF2A /* menu-button.png in Resources */,
 				E23226321ADE042200BFFF2A /* Main.storyboard in Resources */,
 				E2FC1DE61AE0CD1E00418DA8 /* HJHomeTableViewCell.xib in Resources */,
@@ -637,14 +659,16 @@
 				E23226791ADE081F00BFFF2A /* HJLeftViewController.swift in Sources */,
 				E232266B1ADE071E00BFFF2A /* SlideNavigationContorllerAnimatorScale.m in Sources */,
 				E2FC1DE51AE0CD1E00418DA8 /* HJHomeTableViewCell.swift in Sources */,
+				E27A51F91AE7A86500AE40D1 /* UzysRadialProgressActivityIndicator.m in Sources */,
 				E2FC1DCA1AE0B12600418DA8 /* HJNewsModel.swift in Sources */,
-				E2408C421AE5067800995817 /* HJScrollView.swift in Sources */,
 				E232266C1ADE071E00BFFF2A /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
 				E24262481AE4FD4C00AD5C9D /* CExpandHeader.m in Sources */,
 				E24262441AE4CF0500AD5C9D /* HJExpandHeader.swift in Sources */,
+				E27A51F81AE7A86500AE40D1 /* UIScrollView+UzysCircularProgressPullToRefresh.m in Sources */,
 				E23226771ADE080E00BFFF2A /* HJHomeViewController.swift in Sources */,
 				E232262F1ADE042200BFFF2A /* ViewController.swift in Sources */,
 				E23226751ADE076100BFFF2A /* HJRootView.swift in Sources */,
+				E2FB611B1AE5E8D200EAD500 /* HJHeadView.swift in Sources */,
 				E232262D1ADE042200BFFF2A /* HJKnowDaily.xcdatamodeld in Sources */,
 				E2FB87E41ADF50E8009A840F /* HJHttpRequest.swift in Sources */,
 				E232266A1ADE071E00BFFF2A /* SlideNavigationContorllerAnimatorFade.m in Sources */,
@@ -798,6 +822,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HJKnowDaily/HJKnowDaily-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -810,6 +835,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HJKnowDaily/HJKnowDaily-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

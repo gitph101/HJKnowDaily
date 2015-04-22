@@ -7,16 +7,23 @@
 //
 
 import UIKit
+import Foundation
 import SwiftyJSON
-class HJHomeViewController: HJRootViewController ,SlideNavigationControllerDelegate,UITableViewDataSource,UITableViewDelegate{
+class HJHomeViewController: HJRootViewController ,SlideNavigationControllerDelegate,UITableViewDataSource,UITableViewDelegate,UINavigationControllerDelegate,UIScrollViewDelegate{
     
-    let headViewHeight:CGFloat = 80
-    dynamic var tableView:UITableView = UITableView()
+    let headViewHeight:CGFloat = 200
+    
     var datas = [AnyObject]()
+    var headDatas = [AnyObject]()
+    var currentDate:String = "20131119"
+    
+    dynamic var tableView:UITableView = UITableView()
     var headView:UIView = UIView()
-    
-    
+    var headScrollView:UIScrollView = UIScrollView()
+    var pageContro:UIPageControl = UIPageControl()
+
     override func viewDidLoad() {
+//        self.navigationController?.navigationBar.hidden = true
         super.viewDidLoad()
         view.backgroundColor = UIColor.whiteColor()
         loadData()
@@ -26,35 +33,146 @@ class HJHomeViewController: HJRootViewController ,SlideNavigationControllerDeleg
     }
     
     func loadData(){
+        // GUO WANG XIAOXI http://news.at.zhihu.com/api/4/news/before/20131119
         request.urlRequest("http://news-at.zhihu.com/api/4/news/latest", success: { (data,error) -> Void in
             let json:JSON = JSON(data!)
             println(json)
             self.datas = json["stories"].arrayObject!
+            self.headDatas = json["top_stories"].arrayObject!
+            self.currentDate = json["date"].stringValue
             self.tableView.reloadData()
+            self.refreshView()
+        })
+    }
+    
+    
+    func loadDataBefore(strdate:String){
+        request.urlRequest("http://news-at.zhihu.com/api/4/news/latest", success: { (data,error) -> Void in
+            let json:JSON = JSON(data!)
+            println(json)
+            self.datas = json["stories"].arrayObject!
+            self.currentDate = json["date"].stringValue
+            self.tableView.reloadData()
+            self.refreshView()
 
         })
     }
     
+    
     func setUI(){
+    
+        var bar = self.navigationController?.navigationBar
+        bar?.tintColor = UIColor.whiteColor()
+        bar?.translucent = true
+        bar?.backgroundImageForBarMetrics(UIBarMetrics.Compact)
+        bar?.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Compact)
+        bar?.setBackgroundImage(UIImage(), forBarPosition: UIBarPosition.Any, barMetrics: UIBarMetrics.Compact)
+        bar?.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+
+
         tableView.frame = CGRectMake(0, 0, view.frame.width, view.frame.height)
+//        tableView = UITableView(frame: CGRectMake(0, 0, view.frame.width, view.frame.height), style: UITableViewStyle.Grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerClass(HJHomeTableViewCell.self, forCellReuseIdentifier: "cell")        // Do any additional setup after loading the view.
         view.addSubview(tableView)
         
-        //headView
-//        headView.frame = CGRectMake(0, 0, view.frame.width, headViewHeight)
-//        headView.backgroundColor = UIColor.redColor()
-////        tableView.tableHeaderView = headView
-//        HJExpandHeader.expandWithScrollView(tableView, expandView: headView)
-        
-        var image1:UIImageView = UIImageView(frame: CGRectMake(0, 0, Utility.kWidth, 150))
-        image1.image = UIImage(named: "image")
-        image1.clipsToBounds = true;
-        image1.contentMode = UIViewContentMode.ScaleAspectFill;
-        
-        HJExpandHeader.expandWithScrollView(tableView, expandView: image1)
+        // 加载视图。
 
+        headView.frame = CGRectMake(0, 0, view.frame.width, headViewHeight)
+//        headView.userInteractionEnabled = false
+        
+        headScrollView.frame = CGRectMake(0, 0, view.frame.width, headViewHeight)
+        headScrollView.pagingEnabled = true
+        headScrollView.showsHorizontalScrollIndicator = false
+        headScrollView.showsVerticalScrollIndicator = false
+        headScrollView.bounces = false
+        headScrollView.tag = 100
+        headScrollView.delegate = self
+        headView.addSubview(headScrollView)
+        headScrollView.autoresizingMask = UIViewAutoresizing.FlexibleHeight
+        
+        pageContro.frame = CGRectMake(0, headView.frame.height - 20, view.frame.width, 20)
+        pageContro.pageIndicatorTintColor = UIColor.grayColor()
+        pageContro.currentPageIndicatorTintColor = UIColor.whiteColor()
+        pageContro.backgroundColor = UIColor.clearColor()
+        pageContro.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
+
+        headView.addSubview(pageContro)
+
+//        var image1:UIImageView = UIImageView(frame: CGRectMake(100, 90, Utility.kWidth, 150))
+//        image1.image = UIImage(named: "image")
+//        image1.clipsToBounds = true;
+//        image1.contentMode = UIViewContentMode.ScaleAspectFill;
+//        
+        HJExpandHeader.expandWithScrollView(tableView, expandView: headView)
+        
+        tableView.addPullToRefreshActionHandler({ () -> Void in
+            //            self.tableView.stopRefreshAnimation
+            
+            }, navigationController: self.navigationController)
+        tableView.stopRefreshAnimation()
+        tableView.addTopInsetInPortrait(64, topInsetInLandscape: 64)
+        
+        
+        println("偏移量3:" + String(stringInterpolationSegment: tableView.contentOffset.y))
+        println("yuan dian zuo biao1:" + String(stringInterpolationSegment: tableView.frame.origin.y))
+
+        tableView.addObserver(self, forKeyPath: "contentOffset", options:NSKeyValueObservingOptions.New, context: nil)
+//        tableView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
+//        tableView.contentOffset = CGPointMake(0, -500)
+        
+    }
+    
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+        
+        var offfsetY:CGFloat = tableView.contentOffset.y
+        println("偏移量4:" + String(stringInterpolationSegment: tableView.contentOffset.y))
+        println("yuan dian zuo biao2:" + String(stringInterpolationSegment: tableView.frame.origin.y))
+    }
+    
+    
+    
+    
+    
+    func refreshView(){
+        for i in 0...headDatas.count - 1{
+            let index:CGFloat = CGFloat(i)
+            let view = UIImageView(frame: CGRectMake((index) * headScrollView.frame.width , 0, headScrollView.frame.width, headScrollView.frame.height))
+            view.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
+
+            headScrollView.addSubview(view)
+            if (headDatas[i].objectForKey("image") != nil){
+                let image:String = headDatas[i].objectForKey("image") as! String
+                ImageLoader.sharedLoader.imageForUrl(image as String, completionHandler:{(image: UIImage?, url: String) in
+                    view.image = image
+                })
+                
+            }else if (headDatas[i].objectForKey("images") != nil){
+                let image:String = headDatas[i].objectForKey("images") as! String
+                ImageLoader.sharedLoader.imageForUrl(image as String, completionHandler:{(image: UIImage?, url: String) in
+                    view.image = image
+                })
+                
+            }
+            let image:String = headDatas[i].objectForKey("image") as! String
+            ImageLoader.sharedLoader.imageForUrl(image as String, completionHandler:{(image: UIImage?, url: String) in
+                view.image = image
+            })
+            
+            var headTitleLable = UILabel()
+            headTitleLable.font = UIFont.boldSystemFontOfSize(17)
+            headTitleLable.textColor = UIColor.whiteColor()
+            headTitleLable.frame = CGRectMake(0, view.frame.height - 80, headScrollView.frame.width, 60)
+            headTitleLable.numberOfLines = 0
+            headTitleLable.text = "标题在哪里"
+//            headTitleLable.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
+
+            view.addSubview(headTitleLable)
+            headTitleLable.text = headDatas[i].objectForKey("title") as? String
+        }
+        headScrollView.contentSize = CGSizeMake(headScrollView.frame.width * CGFloat(headDatas.count), headScrollView.frame.height)
+        pageContro.numberOfPages = headDatas.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -78,7 +196,6 @@ class HJHomeViewController: HJRootViewController ,SlideNavigationControllerDeleg
             })
             
         }
-
         return cell
     }
     
@@ -91,6 +208,16 @@ class HJHomeViewController: HJRootViewController ,SlideNavigationControllerDeleg
         return 90
     }
     
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        var view:UIView = UIView(frame: CGRectMake(0, 0, 0, 0))
+        return view
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -98,7 +225,20 @@ class HJHomeViewController: HJRootViewController ,SlideNavigationControllerDeleg
     func slideNavigationControllerShouldDisplayLeftMenu() -> Bool {
         return true
     }
-
+    
+    // MARK: - ScrllViewDelegate
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        
+        if scrollView.tag == 100{
+            var index = scrollView.contentOffset.x / scrollView.frame.width
+            pageContro.currentPage = Int(index)
+        }
+    }
+    
+    
+//    override func viewDidAppear(animated: Bool) {
+//        tableView.triggerPullToRefresh()
+//    }
     /*
     // MARK: - Navigation
 
