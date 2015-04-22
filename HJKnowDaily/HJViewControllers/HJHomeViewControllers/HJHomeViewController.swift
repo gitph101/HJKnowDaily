@@ -11,7 +11,7 @@ import Foundation
 import SwiftyJSON
 class HJHomeViewController: HJRootViewController ,SlideNavigationControllerDelegate,UITableViewDataSource,UITableViewDelegate,UINavigationControllerDelegate,UIScrollViewDelegate{
     
-    let headViewHeight:CGFloat = 200
+    let headViewHeight:CGFloat = 300
     
     var datas = [AnyObject]()
     var headDatas = [AnyObject]()
@@ -80,7 +80,6 @@ class HJHomeViewController: HJRootViewController ,SlideNavigationControllerDeleg
         // 加载视图。
 
         headView.frame = CGRectMake(0, 0, view.frame.width, headViewHeight)
-//        headView.userInteractionEnabled = false
         
         headScrollView.frame = CGRectMake(0, 0, view.frame.width, headViewHeight)
         headScrollView.pagingEnabled = true
@@ -100,11 +99,6 @@ class HJHomeViewController: HJRootViewController ,SlideNavigationControllerDeleg
 
         headView.addSubview(pageContro)
 
-//        var image1:UIImageView = UIImageView(frame: CGRectMake(100, 90, Utility.kWidth, 150))
-//        image1.image = UIImage(named: "image")
-//        image1.clipsToBounds = true;
-//        image1.contentMode = UIViewContentMode.ScaleAspectFill;
-//        
         HJExpandHeader.expandWithScrollView(tableView, expandView: headView)
         
         tableView.addPullToRefreshActionHandler({ () -> Void in
@@ -114,21 +108,6 @@ class HJHomeViewController: HJRootViewController ,SlideNavigationControllerDeleg
         tableView.stopRefreshAnimation()
         tableView.addTopInsetInPortrait(64, topInsetInLandscape: 64)
         
-        
-        println("偏移量3:" + String(stringInterpolationSegment: tableView.contentOffset.y))
-        println("yuan dian zuo biao1:" + String(stringInterpolationSegment: tableView.frame.origin.y))
-
-        tableView.addObserver(self, forKeyPath: "contentOffset", options:NSKeyValueObservingOptions.New, context: nil)
-//        tableView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
-//        tableView.contentOffset = CGPointMake(0, -500)
-        
-    }
-    
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-        
-        var offfsetY:CGFloat = tableView.contentOffset.y
-        println("偏移量4:" + String(stringInterpolationSegment: tableView.contentOffset.y))
-        println("yuan dian zuo biao2:" + String(stringInterpolationSegment: tableView.frame.origin.y))
     }
     
     
