@@ -10,13 +10,13 @@ import UIKit
 
 class HJExpandHeader: NSObject,UIScrollViewDelegate {
     let HJExpandContentOffset = "contentOffset"
+    let HJImageHeight:CGFloat = 120
+    let HJImageTopHeight:CGFloat = 30
+    let HJImageBottomHeight:CGFloat = 80
     
     weak var scrollView:UIScrollView?//=UIScrollView()
     weak var expandView:UIView?//=UIView()
-    
     var expandHeight:CGFloat = 0
-    
-    
     static let expandHeader:HJExpandHeader = HJExpandHeader()
     
     class func expandWithScrollView(scrollView:UIScrollView,expandView:UIView)->HJExpandHeader{
@@ -28,39 +28,31 @@ class HJExpandHeader: NSObject,UIScrollViewDelegate {
         
         expandView = tempView
         scrollView = tempScorllView
-        
         expandHeight = CGRectGetHeight(tempView.frame)
-//        expandView?.frame = CGRectMake(0, 0, Utility.kWidth, 400);
-        
         
         scrollView = tempScorllView
         scrollView!.backgroundColor = UIColor.clearColor()
-        scrollView!.contentInset = UIEdgeInsetsMake(expandHeight - 64 - 100, 0, 0, 0);
+        scrollView!.contentInset = UIEdgeInsetsMake(expandHeight - 64 - HJImageTopHeight - HJImageBottomHeight, 0, 0, 0); // 设置headView 显示大小。
         scrollView!.insertSubview(expandView!, atIndex: 0)
         println(scrollView?.contentOffset)
         var offfsetY:CGFloat = scrollView!.contentOffset.y
-        println("偏移量2" + String(stringInterpolationSegment: offfsetY))
         // KVO 监听值的变化
         scrollView!.addObserver(self, forKeyPath: HJExpandContentOffset, options:NSKeyValueObservingOptions.New, context: nil)
         //使View可以伸展效果  重要属性
         expandView!.contentMode = UIViewContentMode.ScaleAspectFill
         expandView!.clipsToBounds = true
-        
         reSizeView()
     }
     
     // 重置位置
     func reSizeView(){
-        expandView!.frame = CGRectMake(0, expandHeight * -1, CGRectGetWidth(expandView!.frame), expandHeight)
+        expandView!.frame = CGRectMake(0,  -HJImageTopHeight - (expandHeight - HJImageTopHeight - HJImageBottomHeight), CGRectGetWidth(expandView!.frame), expandHeight)
     }
     
     
     
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-        
-        
-        var offfsetY:CGFloat = scrollView!.contentOffset.y
-        println("偏移量1" + String(stringInterpolationSegment: offfsetY))
+            var offfsetY:CGFloat = scrollView!.contentOffset.y
         if keyPath != HJExpandContentOffset{
             return
         }
@@ -71,15 +63,18 @@ class HJExpandHeader: NSObject,UIScrollViewDelegate {
         // 这里偏移量变成 200
         var offfsetY:CGFloat = scrollView.contentOffset.y
         println("偏移量" + String(stringInterpolationSegment: offfsetY))
-        
-        
-        if offfsetY < (expandHeight * -1){
+        println(expandView!.frame)
+
+        if offfsetY < (expandHeight * -1 + HJImageBottomHeight + HJImageTopHeight){
+            
+            println(expandView!.frame)
             var currentFrame:CGRect = expandView!.frame
-            currentFrame.origin.y = offfsetY
-            currentFrame.size.height = offfsetY * -1
+            currentFrame.origin.y = offfsetY - HJImageTopHeight
+            currentFrame.size.height = offfsetY * -1 + HJImageBottomHeight + HJImageTopHeight
             expandView!.frame  = currentFrame
+            println(expandView!.frame)
+
         }
-        
     }
     
     func animationForScrollView(){

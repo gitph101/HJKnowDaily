@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E201B93A1AE8EF1F0018B4C7 /* RefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E201B9311AE8EF1F0018B4C7 /* RefreshControl.m */; };
+		E201B93B1AE8EF1F0018B4C7 /* pull_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E201B9331AE8EF1F0018B4C7 /* pull_refresh@2x.png */; };
+		E201B93C1AE8EF1F0018B4C7 /* pull_refresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E201B9341AE8EF1F0018B4C7 /* pull_refresh@3x.png */; };
+		E201B93D1AE8EF1F0018B4C7 /* RefreshBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = E201B9361AE8EF1F0018B4C7 /* RefreshBottomView.m */; };
+		E201B93E1AE8EF1F0018B4C7 /* RefreshTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E201B9381AE8EF1F0018B4C7 /* RefreshTopView.m */; };
 		E232262A1ADE042200BFFF2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23226291ADE042200BFFF2A /* AppDelegate.swift */; };
 		E232262D1ADE042200BFFF2A /* HJKnowDaily.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E232262B1ADE042200BFFF2A /* HJKnowDaily.xcdatamodeld */; };
 		E232262F1ADE042200BFFF2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E232262E1ADE042200BFFF2A /* ViewController.swift */; };
@@ -142,6 +147,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E201B9301AE8EF1F0018B4C7 /* RefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshControl.h; sourceTree = "<group>"; };
+		E201B9311AE8EF1F0018B4C7 /* RefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshControl.m; sourceTree = "<group>"; };
+		E201B9331AE8EF1F0018B4C7 /* pull_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pull_refresh@2x.png"; sourceTree = "<group>"; };
+		E201B9341AE8EF1F0018B4C7 /* pull_refresh@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pull_refresh@3x.png"; sourceTree = "<group>"; };
+		E201B9351AE8EF1F0018B4C7 /* RefreshBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshBottomView.h; sourceTree = "<group>"; };
+		E201B9361AE8EF1F0018B4C7 /* RefreshBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshBottomView.m; sourceTree = "<group>"; };
+		E201B9371AE8EF1F0018B4C7 /* RefreshTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshTopView.h; sourceTree = "<group>"; };
+		E201B9381AE8EF1F0018B4C7 /* RefreshTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshTopView.m; sourceTree = "<group>"; };
+		E201B9391AE8EF1F0018B4C7 /* RefreshViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshViewDelegate.h; sourceTree = "<group>"; };
 		E23226241ADE042200BFFF2A /* HJKnowDaily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HJKnowDaily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E23226281ADE042200BFFF2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E23226291ADE042200BFFF2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -214,6 +228,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E201B92F1AE8EF1F0018B4C7 /* RefreshControl */ = {
+			isa = PBXGroup;
+			children = (
+				E201B9301AE8EF1F0018B4C7 /* RefreshControl.h */,
+				E201B9311AE8EF1F0018B4C7 /* RefreshControl.m */,
+				E201B9321AE8EF1F0018B4C7 /* RefreshView */,
+			);
+			path = RefreshControl;
+			sourceTree = "<group>";
+		};
+		E201B9321AE8EF1F0018B4C7 /* RefreshView */ = {
+			isa = PBXGroup;
+			children = (
+				E201B9331AE8EF1F0018B4C7 /* pull_refresh@2x.png */,
+				E201B9341AE8EF1F0018B4C7 /* pull_refresh@3x.png */,
+				E201B9351AE8EF1F0018B4C7 /* RefreshBottomView.h */,
+				E201B9361AE8EF1F0018B4C7 /* RefreshBottomView.m */,
+				E201B9371AE8EF1F0018B4C7 /* RefreshTopView.h */,
+				E201B9381AE8EF1F0018B4C7 /* RefreshTopView.m */,
+				E201B9391AE8EF1F0018B4C7 /* RefreshViewDelegate.h */,
+			);
+			path = RefreshView;
+			sourceTree = "<group>";
+		};
 		E232261B1ADE042200BFFF2A = {
 			isa = PBXGroup;
 			children = (
@@ -336,6 +374,7 @@
 		E23226561ADE06D200BFFF2A /* OC */ = {
 			isa = PBXGroup;
 			children = (
+				E201B92F1AE8EF1F0018B4C7 /* RefreshControl */,
 				E27A51DD1AE74ACA00AE40D1 /* UzysRadialProgressActivityIndicator */,
 				E24262451AE4FD4C00AD5C9D /* ExpandHelp */,
 				E23226581ADE071E00BFFF2A /* slide-menu */,
@@ -631,7 +670,9 @@
 			files = (
 				E27A51F71AE7A86500AE40D1 /* centerIcon@2x.png in Resources */,
 				E232266F1ADE071E00BFFF2A /* menu-button.png in Resources */,
+				E201B93C1AE8EF1F0018B4C7 /* pull_refresh@3x.png in Resources */,
 				E23226321ADE042200BFFF2A /* Main.storyboard in Resources */,
+				E201B93B1AE8EF1F0018B4C7 /* pull_refresh@2x.png in Resources */,
 				E2FC1DE61AE0CD1E00418DA8 /* HJHomeTableViewCell.xib in Resources */,
 				E23226371ADE042200BFFF2A /* LaunchScreen.xib in Resources */,
 				E23226701ADE071E00BFFF2A /* menu-button@2x.png in Resources */,
@@ -657,9 +698,12 @@
 				E23226711ADE071E00BFFF2A /* SlideNavigationController.m in Sources */,
 				E2FC1DE81AE1134800418DA8 /* ImageLoader.swift in Sources */,
 				E23226791ADE081F00BFFF2A /* HJLeftViewController.swift in Sources */,
+				E201B93E1AE8EF1F0018B4C7 /* RefreshTopView.m in Sources */,
 				E232266B1ADE071E00BFFF2A /* SlideNavigationContorllerAnimatorScale.m in Sources */,
+				E201B93A1AE8EF1F0018B4C7 /* RefreshControl.m in Sources */,
 				E2FC1DE51AE0CD1E00418DA8 /* HJHomeTableViewCell.swift in Sources */,
 				E27A51F91AE7A86500AE40D1 /* UzysRadialProgressActivityIndicator.m in Sources */,
+				E201B93D1AE8EF1F0018B4C7 /* RefreshBottomView.m in Sources */,
 				E2FC1DCA1AE0B12600418DA8 /* HJNewsModel.swift in Sources */,
 				E232266C1ADE071E00BFFF2A /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
 				E24262481AE4FD4C00AD5C9D /* CExpandHeader.m in Sources */,

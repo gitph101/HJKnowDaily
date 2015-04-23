@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         slide.enableShadow = false 
         window?.rootViewController = slide
         
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
 
         return true
     }
