@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>49492BC2-EDAF-4012-9355-C7C5214D7B3A</string>
 	<key>IDESourceControlProjectName</key>
-	<string>HJKnowDaily</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>7CC426D5CC51AC5C7E64FEC88E0481586B198627</key>
 		<string>https://github.com/gitph101/HJKnowDaily.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>HJKnowDaily.xcodeproj</string>
+	<string>HJKnowDaily.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7CC426D5CC51AC5C7E64FEC88E0481586B198627</key>

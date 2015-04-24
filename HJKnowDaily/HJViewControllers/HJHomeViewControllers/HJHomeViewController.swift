@@ -25,7 +25,7 @@ class HJHomeViewController: HJRootViewController ,SlideNavigationControllerDeleg
     var headtitleScrollView:UIScrollView = UIScrollView()
     var pageContro:UIPageControl = UIPageControl()
 
-    var refreshControl:RefreshControl = RefreshControl()
+//    var refreshControl:RefreshControl = RefreshControl()
     
     override func viewDidLoad() {
 //        self.navigationController?.navigationBar.hidden = true
@@ -106,6 +106,7 @@ class HJHomeViewController: HJRootViewController ,SlideNavigationControllerDeleg
         headtitleScrollView.delegate = self
         headTitleView.addSubview(headtitleScrollView)
         headtitleScrollView.autoresizingMask = UIViewAutoresizing.FlexibleHeight
+    
         
         pageContro.frame = CGRectMake(0, headTitleView.frame.height - 20, view.frame.width, 20)
         pageContro.pageIndicatorTintColor = UIColor.grayColor()
@@ -124,12 +125,13 @@ class HJHomeViewController: HJRootViewController ,SlideNavigationControllerDeleg
             }, navigationController: self.navigationController)
         tableView.stopRefreshAnimation()
         
+        
+        
         //上拉加载
-        refreshControl = RefreshControl(scrollView: tableView, delegate: self)
-        refreshControl.bottomEnabled = false;
-        refreshControl.topEnabled = false;
-
-
+        tableView.addLegendFooterWithRefreshingBlock { () -> Void in
+            
+        }
+        
     }
     
     func refreshView(){
@@ -167,6 +169,8 @@ class HJHomeViewController: HJRootViewController ,SlideNavigationControllerDeleg
             headTitleLable.text = headDatas[i].objectForKey("title") as? String
         }
         headScrollView.contentSize = CGSizeMake(headScrollView.frame.width * CGFloat(headDatas.count), headScrollView.frame.height)
+        headtitleScrollView.contentSize = CGSizeMake(headScrollView.frame.width * CGFloat(headDatas.count), headScrollView.frame.height)
+
         pageContro.numberOfPages = headDatas.count
     }
     
@@ -233,14 +237,17 @@ class HJHomeViewController: HJRootViewController ,SlideNavigationControllerDeleg
         if scrollView.tag == 100{
             var index = scrollView.contentOffset.x / scrollView.frame.width
             pageContro.currentPage = Int(index)
-            
             headtitleScrollView.contentOffset = scrollView.contentOffset
+        }else{
+            headScrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, headScrollView.contentOffset.y)
+
         }
     }
     
     // MARK: - refreshControlDelegate
     func refreshControl(refreshControl: RefreshControl!, didEngageRefreshDirection direction: RefreshDirection) {
-        
+//        self.refreshControl.finishRefreshingDirection(RefreshDirectionBottom)
+
     }
     
 //    override func viewDidAppear(animated: Bool) {

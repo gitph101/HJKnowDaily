@@ -81,10 +81,7 @@ static char UIScrollViewPullToRefreshView;
 
         view.frame = CGRectMake((self.bounds.size.width - view.bounds.size.width)/2,
                                 10, view.bounds.size.width, view.bounds.size.height);
-//        view.backgroundColor = [UIColor redColor];
         [navigationController.navigationBar addSubview:view];
-        
-        
         [self sendSubviewToBack:view];
         self.pullToRefreshView = view;
         self.showPullToRefresh = YES;
@@ -130,7 +127,6 @@ static char UIScrollViewPullToRefreshView;
             [self addObserver:self.pullToRefreshView forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
             [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:[UIDevice currentDevice]];
-
             self.pullToRefreshView.isObserving = YES;
         }
     }
@@ -143,7 +139,6 @@ static char UIScrollViewPullToRefreshView;
             [self removeObserver:self.pullToRefreshView forKeyPath:@"frame"];
             [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
             [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:[UIDevice currentDevice]];
-
             self.pullToRefreshView.isObserving = NO;
         }
     }
