@@ -73,8 +73,8 @@ class HJHomeViewController: HJRootViewController ,SlideNavigationControllerDeleg
         bar?.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Compact)
         bar?.setBackgroundImage(UIImage(), forBarPosition: UIBarPosition.Any, barMetrics: UIBarMetrics.Compact)
         bar?.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-
-
+        
+    
         tableView.frame = CGRectMake(0, 0, view.frame.width, view.frame.height)
         tableView = UITableView(frame: CGRectMake(0, 0, view.frame.width, view.frame.height), style: UITableViewStyle.Grouped)
         tableView.delegate = self
